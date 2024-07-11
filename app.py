@@ -3,8 +3,18 @@ import requests
 from bs4 import BeautifulSoup
 import random
 import time
+from flask_cors import CORS
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 
 app = Flask(__name__)
+CORS(app)
+
+limiter = Limiter(
+    get_remote_address,
+    app=app,
+    default_limits=["20 per minute"]
+)
 
 user_agents = [
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
@@ -50,8 +60,8 @@ def search_entity(entity_name):
             rows.append({
                 "Entity": entity,
                 "Jurisdiction": jurisdiction,
-                "Linked To": linked_to,
-                "Data From": data_from
+                "LinkedTo": linked_to,
+                "DataFrom": data_from
             })
     
     results = {
@@ -61,6 +71,7 @@ def search_entity(entity_name):
     return results
 
 @app.route('/search', methods=['GET'])
+@limiter.limit("20 per minute")
 def search():
     entity_name = request.args.get('entity_name')
     if not entity_name:
