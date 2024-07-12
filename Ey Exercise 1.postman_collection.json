@@ -1,0 +1,54 @@
+{
+	"info": {
+		"_postman_id": "2287e90e-214b-4f36-b3cd-5ab102ae1c69",
+		"name": "Ey Exercise 1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33277687"
+	},
+	"item": [
+		{
+			"name": "getByName",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/search?entity_name=New Entity Limited",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"search"
+					],
+					"query": [
+						{
+							"key": "entity_name",
+							"value": "New Entity Limited"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -3,3 +3,4 @@ requests
 beautifulsoup4
 flask_cors 
 flask-limiter
+Flask-HTTPAuth

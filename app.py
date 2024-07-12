@@ -1,4 +1,6 @@
 from flask import Flask, request, jsonify
+from flask_httpauth import HTTPBasicAuth
+from werkzeug.security import generate_password_hash, check_password_hash
 import requests
 from bs4 import BeautifulSoup
 import random
@@ -15,6 +17,18 @@ limiter = Limiter(
     app=app,
     default_limits=["20 per minute"]
 )
+
+auth = HTTPBasicAuth()
+
+users = {
+    "user1": generate_password_hash("password1"),
+    "user2": generate_password_hash("password2")
+}
+
+@auth.verify_password
+def verify_password(username, password):
+    if username in users and check_password_hash(users.get(username), password):
+        return username
 
 user_agents = [
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
@@ -70,8 +84,9 @@ def search_entity(entity_name):
     }
     return results
 
-@app.route('/search', methods=['GET'])
+@app.route('/api/search', methods=['GET'])
 @limiter.limit("20 per minute")
+@auth.login_required
 def search():
     entity_name = request.args.get('entity_name')
     if not entity_name:
