@@ -22,8 +22,9 @@
 `http://127.0.0.1:5000/search?entity_name={entity_name}`
 
  * Example <br>
-`http://127.0.0.1:5000/search?entity_name=New Entity Limited`
-`http://127.0.0.1:5000/search?entity_name=LYNWARD INC.`
+ * * `http://127.0.0.1:5000/search?entity_name=New Entity Limited` <br>
+
+ * * `http://127.0.0.1:5000/search?entity_name=LYNWARD INC.`
 
 7. Postman Image
 ![alt text](image.png)
