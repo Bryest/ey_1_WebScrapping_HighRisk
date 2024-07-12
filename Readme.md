@@ -1,5 +1,8 @@
 
 # Web Scraping exercise 1 
+#### Usuario: user1
+#### Contraseña: password1
+
 ## [Offshore Leaks Database](https://offshoreleaks.icij.org/)
 ### To Run the project
 1. Create the virtual environment <br>
@@ -19,12 +22,12 @@
 
 6. Endpoint and Example <br>
  *  Endpoint <br>
-`http://127.0.0.1:5000/search?entity_name={entity_name}`
+`http://127.0.0.1:5000/api/search?entity_name={entity_name}`
 
  * Example <br>
- * * `http://127.0.0.1:5000/search?entity_name=New Entity Limited` <br>
+ * * `http://127.0.0.1:5000/api/search?entity_name=New Entity Limited` <br>
 
- * * `http://127.0.0.1:5000/search?entity_name=LYNWARD INC.`
+ * * `http://127.0.0.1:5000/api/search?entity_name=LYNWARD INC.`
 
 7. Postman Image
 ![alt text](image.png)
